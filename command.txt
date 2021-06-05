@@ -1,0 +1,7 @@
+g++ main.cpp -I D://Python39//include -L D://Python39//libs -lpython39
+g++ -o main main.cpp -I D://Python39//include -L D://Python39//libs -lpython39
+
+
+//where -I includes the header
+//where -L includes the library
+//where -l specifies the library

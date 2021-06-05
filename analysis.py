@@ -1,7 +1,7 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-import collections as cl
+# import numpy as np
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# import collections as cl
 
 plt.style.use('dark_background')
 df = pd.read_csv("pAnalysis.csv")
@@ -27,10 +27,11 @@ freq = counterGen.values()
 var= counterGen.keys()
 
 
-fig, axes = plt.subplots(4, 4, figsize=(12, 8))
+# fig, axes = plt.subplots(4, 4, figsize=(12, 8))
 
-fig = plt.subplot(2,2,1)
-fig,plt.tight_layout()
+# fig = 
+# fig,plt.tight_layout()
+plt.subplot(2,2,1)
 plt.title("Covid 19 Taluk wise Distribution",color="#b0ece2",fontsize=10)
 plt.pie(TalFreq,labels=TalVal)
 plt.subplot(2,2,3)
@@ -44,4 +45,6 @@ plt.subplot(2,2,4)
 plt.title("Major Symptoms Chart",color="#b0ece2",fontsize=10)
 plt.bar(range(len(counterSymp)), list(counterSymp.values()), align='center')
 plt.xticks(range(len(counterSymp)), list(counterSymp.keys()))
+mng = plt.get_current_fig_manager()
+mng.resize(*mng.window.maxsize())
 plt.show()

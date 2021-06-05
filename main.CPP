@@ -1,3 +1,6 @@
+#define PY_SSIZE_T_CLEAN
+#include <Python.h>
+
 #include<iostream>
 #include<conio.h>
 #include<fstream>
@@ -7,7 +10,6 @@
 #include<vector>
 #include<sstream>
 #include<bits/stdc++.h>
-
 
 using namespace std;
 
@@ -20,6 +22,7 @@ void patientAnalytics();
 void disaplayTable( vector<vector<string> > parsedCsv);
 map<string,int> getFrequency(vector<string> vec);
 void putFrequency(map<string,int> str2);
+int pythonScript();
 class MainMenu
 {
     private:
@@ -61,7 +64,8 @@ void MainMenu::getMenuChoice(int choice)
             back = donation_function();
             break; 
         case 4:
-             patientAnalytics();
+            //  patientAnalytics();
+            back = pythonScript();
             break;
         case 5:
                 exit(0);
@@ -73,12 +77,21 @@ void MainMenu::getMenuChoice(int choice)
 }
 int main()
 {
-    
+    char filename[] = "initialise.py";
+	FILE* fp;
+
+	Py_Initialize();
+
+	fp = _Py_fopen(filename, "r");
+	PyRun_SimpleFile(fp, filename);
+
        do{
         system("cls");
         MainMenu Main;
         Main.printMenu();
        }while(back==1);
+
+    Py_Finalize();
     getch();
     return 0;
 }
@@ -221,3 +234,16 @@ void putFrequency(map<string, int> str2)
              cout<<"\n";
 }
 
+int pythonScript()
+{
+    char filename[] = "analysis.py";
+	FILE* fp;
+
+	// Py_Initialize();
+
+	fp = _Py_fopen(filename, "r");
+	PyRun_SimpleFile(fp, filename);
+
+	// Py_Finalize();
+    return 1;
+}
